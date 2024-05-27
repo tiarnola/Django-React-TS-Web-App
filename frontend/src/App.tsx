@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Home, Login, Register, NotFound } from "./pages";
 import ProtectedRoute from "./components/ProtectedRoute";
+import "../src/index.css"
 
 function Logout() {
   localStorage.clear();
