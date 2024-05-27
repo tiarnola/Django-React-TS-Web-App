@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import api from "../api";
 import LoadingIndicator from "./LoadingIndicator";
 import "../index.css";
+import axios from "axios";
 
 interface FormProps {
   route: string;
@@ -32,8 +33,26 @@ const Form = ({ route, method }: FormProps) => {
         navigate("/login");
       }
     } catch (error) {
-      alert(error);
-    } finally {
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          if (error.response.status === 400) {
+            alert("Username already taken.");
+          } else if (error.response.status === 401) {
+            alert("Unauthorized. Please check your username and password.");
+          } else {
+            alert("An unexpected error occurred. Please try again.");
+          }
+        } else if (error.request) {
+          alert("No response received from the server. Please try again.");
+        } else {
+          alert("An error occurred. Please try again.");
+        }
+      } else {
+        alert("An unknown error occurred. Please try again.");
+      }
+      console.log(error);
+    }
+    finally {
       setLoading(false);
     }
   };
