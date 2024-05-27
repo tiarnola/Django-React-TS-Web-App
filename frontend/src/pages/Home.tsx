@@ -57,7 +57,7 @@ export const Home = () => {
               <Note note={note} onDelete={deleteNote} key={note.id} />
             ))}
 
-            <h2 className="text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+            <h2 className="text-center font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
               Create a Note
             </h2>
             <form onSubmit={createNote} className="space-y-4 md:space-y-6">
