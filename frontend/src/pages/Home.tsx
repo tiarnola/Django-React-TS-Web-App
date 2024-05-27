@@ -46,21 +46,23 @@ export const Home = () => {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 h-screen overflow-y-scroll">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+    <section className="bg-gray-50 dark:bg-gray-900 h-screen overflow-y-auto">
+      <div className="flex flex-col items-center justify-center min-h-full px-6 py-8 mx-auto lg:py-0">
+        <div className="w-full bg-white rounded-lg shadow dark:border sm:max-w-xl dark:bg-gray-800 dark:border-gray-700">
+          <div className="p-6 space-y-10">
+            <h1 className="text-center text-xl font-bold leading-tight tracking-tight text-gray-900  dark:text-white">
               Notes
             </h1>
-            {notes.map((note) => (
-              <Note note={note} onDelete={deleteNote} key={note.id} />
-            ))}
-
+            <div className="space-y-4">
+              {notes.map((note) => (
+                <Note note={note} onDelete={deleteNote} key={note.id} />
+              ))}
+            </div>
+            <div>
             <h2 className="text-center font-bold leading-tight tracking-tight text-gray-900 dark:text-white">
               Create a Note
             </h2>
-            <form onSubmit={createNote} className="space-y-4 md:space-y-6">
+            <form onSubmit={createNote} className="space-y-4">
               <div>
                 <label
                   htmlFor="title"
@@ -100,6 +102,7 @@ export const Home = () => {
                 className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               ></input>
             </form>
+            </div>
           </div>
         </div>
       </div>
